@@ -1,0 +1,10 @@
+###############################################################################
+###  File yml : Contain some global information for the project ###
+###############################################################################
+
+
+#path to data:
+src: 
+    images: ./src/images
+    data: ./src/data
+        
