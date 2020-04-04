@@ -1,3 +1,8 @@
 cx-Freeze==6.1
+numpy==1.18.2
+pandas==1.0.3
 pygame==1.9.6
+python-dateutil==2.8.1
+pytz==2019.3
 PyYAML==5.3.1
+six==1.14.0
