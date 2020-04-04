@@ -1,0 +1,3 @@
+envs
+*.pyc
+__pycache__
