@@ -1,7 +1,4 @@
 
-import os
-import pygame as pg
-
 from Model.board import Cell
 
 import Configuration.config as config

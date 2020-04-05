@@ -5,5 +5,5 @@ class Cell():
     
     def __init__(self, x, y):
             
-        self.width, self.heigth = self.WIDTH, self.HEIGTH
-        self x, self y = x, y
+        self.width, self.height = self.WIDTH, self.HEIGHT
+        self.x, self.y = x, y
