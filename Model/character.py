@@ -4,7 +4,7 @@ from Model.board import Cell
 
 config.load('./configuration/initialisation.yml')
 
-class Player(Cell):
+class Character(Cell):
     
     SPEED = 1
     INIT_X = 0
