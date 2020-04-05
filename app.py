@@ -32,7 +32,8 @@ class App:
        
  
 if __name__ == '__main__':   
-  
+    
     m = maze.Maze()
     m.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
     print(m)
+    

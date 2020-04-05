@@ -3,8 +3,6 @@ import os
 from csv import reader
 from random import randint
 
-import pandas as pd
-
 import Configuration.config as config
 from Model.board import Cell
 from Model.gate import Gate
@@ -14,7 +12,7 @@ from Model.wall import Wall
 
 config.load('./configuration/initialisation.yml')
 
-class Maze:    
+class Maze:
     WIDTH = 15
     HEIGTH = 15
     
@@ -24,7 +22,14 @@ class Maze:
         self.walls = []
         self.gates = []
         self.items = []
-        self.guardians = []       
+        self.guardians = []
+        
+        self.symbol = {'wall':'0',
+                       'character': 'X',
+                       'gate': '9',
+                       'needle': 'N',
+                       'tube': 'T',
+                       'ether': 'E'}   
         
         self.number_items = json.load(open(os.path.join(config.value['src']['data'], 'number_items.json')))    
     
@@ -101,4 +106,9 @@ class Maze:
                     self.items.append(Tube(x, y)) 
                 elif key == "Ether":
                     self.map[x][y] = 'E'
-                    self.items.append(Ether(x, y))        
+                    self.items.append(Ether(x, y))
+                    
+    
+    def update_character_position(self, x, y):
+        
+        self.map[x][y] = self.symbol['character']
