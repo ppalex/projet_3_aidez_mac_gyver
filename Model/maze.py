@@ -66,22 +66,15 @@ class Maze:
         
         width, height = self.get_map_size()
                                 
-        for row in range(width):        
-            for col in range(height):               
-                    if self.map[row][col] == '1':
-                        
-                        x = row * Cell.WIDTH
-                        y = col * Cell.HEIGHT   
+        for x in range(width):        
+            for y in range(height):                                 
+                    if self.map[row][col] == '1':                          
                         self.walls.append(Wall(x, y))
                     
                     elif self.map[row][col] == '9':                    
-                        x = row * Cell.WIDTH
-                        y = col * Cell.HEIGHT
                         self.gates.append(Gate(x, y))
                         
                     elif self.map[row][col] == 'G':                    
-                        x = row * Cell.WIDTH
-                        y = col * Cell.HEIGHT
                         self.guardians.append(Guardian(x, y))
                         
                          
