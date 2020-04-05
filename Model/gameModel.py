@@ -11,5 +11,5 @@ class Model:
         return self.maze
     
     @property
-    def get_player(self):
+    def get_character(self):
         return self.character

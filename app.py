@@ -21,19 +21,27 @@ class App:
     def __init__(self, controller):
         """Initialize pygame and the application."""
         pg.init()
-        clock = pygame.time.Clock().tick(30)         
-        self.running = True         
+        pg.display.set_mode((400, 400))
+        pg.time.Clock().tick(30)
+        
+        self.controller = controller         
+        self.running = True        
     
     def run(self):
         """Run the main event loop."""
-            
+        controller = self.controller
+        model = self.controller.get_model
+          
+        model.maze.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
+           
         while self.running:
-            pass               
+            controller.keyboard_control(self)                 
        
  
-if __name__ == '__main__':   
+if __name__ == '__main__':
     
-    m = maze.Maze()
-    m.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
-    print(m)
+    c = gameController.Controller()
+    game = App(c)
+    game.run()
+    
     

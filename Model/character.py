@@ -17,32 +17,57 @@ class Character(Cell):
         self.alive = True     
         
         self.bag_of_items = {}
-        self.all_items = False    
+        self.all_items = False 
     
     
     # MOVE RIGHT
     
     def move_right(self, maze):
         self.change_x += self.SPEED
-        x, y = self.get_current_pos()
-        width, _ = maze.get_maze_size()
+        current_x, current_y = self.get_current_pos()
+        width, _ = maze.get_map_size()
         
-        if x < width:
-            self.set_current_pos(x+self.change_x, y)
-            maze.update_maze_position(self.x, self.y)
-            
+        if current_x < (width - 1):
+            self.set_current_pos(current_x+self.change_x, current_y)
+            maze.update_character_position(self.x, self.y, current_x, current_y)            
+        self.change_x -= self.SPEED
+        
         
     # MOVE LEFT  
-    def move_left(self):
-        pass
+    def move_left(self, maze):
+        self.change_x -= self.SPEED
+        current_x, current_y = self.get_current_pos()
+        width, _ = maze.get_map_size()
+        
+        if current_x > (0):
+            self.set_current_pos(current_x+self.change_x, current_y)
+            maze.update_character_position(self.x, self.y, current_x, current_y)            
+        self.change_x += self.SPEED
     
     # MOVE DOWN  
-    def move_down(self):
-        pass
+    def move_down(self, maze):
+        
+        self.change_y += self.SPEED
+        current_x, current_y = self.get_current_pos()
+        _, heigth = maze.get_map_size()
+        
+        if current_y < (heigth - 1):
+            self.set_current_pos(current_x, current_y+self.change_y)
+            maze.update_character_position(self.x, self.y, current_x, current_y)            
+        self.change_y -= self.SPEED
     
     # MOVE UP   
-    def move_up(self):
-        pass    
+    def move_up(self, maze):
+        
+        self.change_y -= self.SPEED
+        current_x, current_y = self.get_current_pos()
+        _, heigth = maze.get_map_size()
+        
+        if current_y > 0:
+            self.set_current_pos(current_x, current_y+self.change_y)
+            maze.update_character_position(self.x, self.y, current_x, current_y)            
+        self.change_y += self.SPEED       
+          
     
     def check_collision(self):
         pass

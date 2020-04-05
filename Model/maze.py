@@ -24,7 +24,8 @@ class Maze:
         self.items = []
         self.guardians = []
         
-        self.symbol = {'wall':'0',
+        self.symbol = {'wall':'1',
+                       'path': '0',
                        'character': 'X',
                        'gate': '9',
                        'needle': 'N',
@@ -58,9 +59,8 @@ class Maze:
         self.put_random_items()
         print('random items done')      
         
-    def get_map_size(self):
-        return (len(self.map),len(self.map[0]))
-    
+    def get_map_size(self):        
+        return (len(self.map), len(self.map[0]))    
 
     def generate_maze(self):
         
@@ -68,13 +68,13 @@ class Maze:
                                 
         for x in range(width):        
             for y in range(height):                                 
-                    if self.map[row][col] == '1':                          
+                    if self.map[x][y] == '1':                          
                         self.walls.append(Wall(x, y))
                     
-                    elif self.map[row][col] == '9':                    
+                    elif self.map[x][y] == '9':                    
                         self.gates.append(Gate(x, y))
                         
-                    elif self.map[row][col] == 'G':                    
+                    elif self.map[x][y] == 'G':                    
                         self.guardians.append(Guardian(x, y))
                         
                          
@@ -102,6 +102,7 @@ class Maze:
                     self.items.append(Ether(x, y))
                     
     
-    def update_character_position(self, x, y):
+    def update_character_position(self, x, y, current_x, current_y):
         
-        self.map[x][y] = self.symbol['character']
+        self.map[current_y][current_x] = self.symbol['path']
+        self.map[y][x] = self.symbol['character']
