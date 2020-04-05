@@ -21,14 +21,15 @@ class App:
     
     def __init__(self, controller):
         """Initialize pygame and the application."""
-        pg.init()        
+        pg.init()
+        clock = pygame.time.Clock().tick(30)         
         self.running = True         
     
     def run(self):
         """Run the main event loop."""
-               
+            
         while self.running:
-            pass                   
+            pass                  
        
  
 if __name__ == '__main__':    
