@@ -10,14 +10,9 @@ import Controller.gameController as gameController
 import Model.gameModel as gameModel
 import View.gameView as gameView
 
-from random import randint
-
-
-
 from Model import maze
 
 config.load('./configuration/initialisation.yml')
-
 
 class App:
         
@@ -36,8 +31,8 @@ class App:
             pass               
        
  
-if __name__ == '__main__':    
+if __name__ == '__main__':   
   
     m = maze.Maze()
     m.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
-    # print(m)
+    print(m)

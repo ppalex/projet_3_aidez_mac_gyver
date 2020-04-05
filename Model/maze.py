@@ -49,7 +49,9 @@ class Maze:
         self.data_from_csv(csv_file)
         print('data loaded') 
         self.generate_maze()
-        print('maze generated')       
+        print('maze generated')
+        self.put_random_items()
+        print('random items done')      
         
     def get_map_size(self):
         return (len(self.map),len(self.map[0]))
@@ -75,5 +77,28 @@ class Maze:
                     elif self.map[row][col] == 'G':                    
                         x = row * Cell.WIDTH
                         y = col * Cell.HEIGHT
-                        self.guardians.append(Guardian(x, y))   
+                        self.guardians.append(Guardian(x, y))
+                        
+                         
+    def put_random_items(self):
         
+        width, height = self.get_map_size()
+                     
+        for key, value in self.number_items.items():            
+            for n in range(value):
+                x = randint(0, width - 1)
+                y = randint(0, height - 1)               
+                
+                while not self.map[x][y] == '0':
+                    x = randint(0, width - 1)
+                    Y = randint(0, height - 1)             
+         
+                if key == "Needle":
+                    self.map[x][y] = 'N'
+                    self.items.append(Needle(x, y)) 
+                elif key == "Tube":
+                    self.map[x][y] = 'T'
+                    self.items.append(Tube(x, y)) 
+                elif key == "Ether":
+                    self.map[x][y] = 'E'
+                    self.items.append(Ether(x, y))        
