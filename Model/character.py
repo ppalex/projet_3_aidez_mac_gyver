@@ -27,7 +27,9 @@ class Character(Cell):
         current_x, current_y = self.get_current_pos()
         width, _ = maze.get_map_size()
         
-        if current_x < (width - 1):
+        if current_x < (width - 1) and \
+            (not self.check_collision(current_x+self.change_x, current_y, maze)):
+                
             self.set_current_pos(current_x+self.change_x, current_y)
             maze.update_character_position(self.x, self.y, current_x, current_y)            
         self.change_x -= self.SPEED
@@ -39,7 +41,8 @@ class Character(Cell):
         current_x, current_y = self.get_current_pos()
         width, _ = maze.get_map_size()
         
-        if current_x > (0):
+        if current_x > (0) and \
+            (not self.check_collision(current_x+self.change_x, current_y, maze)):
             self.set_current_pos(current_x+self.change_x, current_y)
             maze.update_character_position(self.x, self.y, current_x, current_y)            
         self.change_x += self.SPEED
@@ -51,7 +54,9 @@ class Character(Cell):
         current_x, current_y = self.get_current_pos()
         _, heigth = maze.get_map_size()
         
-        if current_y < (heigth - 1):
+        if current_y < (heigth - 1) and \
+            (not self.check_collision(current_x, current_y+self.change_y, maze)):
+                
             self.set_current_pos(current_x, current_y+self.change_y)
             maze.update_character_position(self.x, self.y, current_x, current_y)            
         self.change_y -= self.SPEED
@@ -63,14 +68,20 @@ class Character(Cell):
         current_x, current_y = self.get_current_pos()
         _, heigth = maze.get_map_size()
         
-        if current_y > 0:
+        if current_y > 0 and \
+            (not self.check_collision(current_x, current_y+self.change_y, maze)):
             self.set_current_pos(current_x, current_y+self.change_y)
             maze.update_character_position(self.x, self.y, current_x, current_y)            
-        self.change_y += self.SPEED       
+        self.change_y += self.SPEED     
           
     
-    def check_collision(self):
-        pass
+    def check_collision(self, next_x, next_y, maze):
+        collision = False        
+        if maze.map[next_y][next_x] == maze.symbol['wall']:
+            print('COLLISION')
+            collision = True 
+        
+        return collision
     
     def get_current_pos(self):
         return (self.x, self.y)

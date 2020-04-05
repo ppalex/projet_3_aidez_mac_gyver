@@ -18,7 +18,8 @@ class Maze:
     
     def __init__(self):
         
-        self.map = []        
+        self.map = []
+              
         self.walls = []
         self.gates = []
         self.items = []
