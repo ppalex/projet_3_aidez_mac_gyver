@@ -6,7 +6,6 @@ import Configuration.config as config
 
 import Model.maze as maze
 
-
 config.load('./configuration/initialisation.yml')
 
 def test_get_maze_dimension():
