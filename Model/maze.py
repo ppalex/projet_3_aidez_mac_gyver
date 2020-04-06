@@ -28,6 +28,7 @@ class Maze:
         self.symbol = {'wall':'1',
                        'path': '0',
                        'character': 'X',
+                       'gardian': 'G',
                        'gate': '9',
                        'needle': 'N',
                        'tube': 'T',

@@ -14,6 +14,10 @@ class Controller:
     
     def keyboard_control(self, app):
         
+        
+        character =  self.get_model.get_character
+        maze = self.get_model.get_maze
+        
         for event in pg.event.get():
             keys = pg.key.get_pressed()  
             
@@ -23,22 +27,37 @@ class Controller:
             
             elif keys[pg.K_RIGHT]:
                 print('RIGHT')
-                self.get_model.get_character.move_right(self.get_model.get_maze)
+                
+                current_x, current_y = character.get_current_pos()
+                character.move_right(current_x, current_y, maze)                
+                character.check_cell(character.x, character.y, maze)                             
+                maze.update_character_position(character.x, character.y, current_x, current_y)            
+                
                 print(self.get_model.get_maze)
                 
             elif keys[pg.K_LEFT]:
                 print('LEFT')
-                self.get_model.get_character.move_left(self.get_model.get_maze)
+                current_x, current_y = character.get_current_pos()
+                character.move_left(current_x, current_y, maze)
+                character.check_cell(character.x, character.y, maze)                             
+                maze.update_character_position(character.x, character.y, current_x, current_y)
                 print(self.get_model.get_maze)
                 
             elif keys[pg.K_DOWN]:
                 print('DOWN')
-                self.get_model.get_character.move_down(self.get_model.get_maze)
+                current_x, current_y = character.get_current_pos()
+                character.move_down(current_x, current_y, maze)
+                character.check_cell(character.x, character.y, maze)
+                maze.update_character_position(character.x, character.y, current_x, current_y)
+                
                 print(self.get_model.get_maze)
                 
             elif keys[pg.K_UP]:
                 print('UP')
-                self.get_model.get_character.move_up(self.get_model.get_maze)
+                current_x, current_y = character.get_current_pos()
+                character.move_up(current_x, current_y, maze)
+                character.check_cell(character.x, character.y, maze)                             
+                maze.update_character_position(character.x, character.y, current_x, current_y)
                 print(self.get_model.get_maze)
     
             

@@ -7,8 +7,6 @@ import pygame as pg
 import Configuration.config as config
 
 import Controller.gameController as gameController
-import Model.gameModel as gameModel
-import View.gameView as gameView
 
 from Model import maze
 
