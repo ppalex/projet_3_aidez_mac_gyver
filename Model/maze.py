@@ -71,13 +71,13 @@ class Maze:
         for x in range(width):        
             for y in range(height):                                 
                     if self.map[x][y] == '1':                          
-                        self.walls.append(Wall(x, y))
+                        self.walls.append(Wall(y, x))
                     
                     elif self.map[x][y] == '9':                    
-                        self.gates.append(Gate(x, y))
+                        self.gates.append(Gate(y, x))
                         
                     elif self.map[x][y] == 'G':                    
-                        self.guardians.append(Guardian(x, y))
+                        self.guardians.append(Guardian(y, x))
                         
                          
     def put_random_items(self):
@@ -91,17 +91,17 @@ class Maze:
                 
                 while not self.map[x][y] == '0':
                     x = randint(0, width - 1)
-                    Y = randint(0, height - 1)             
+                    y = randint(0, height - 1)             
          
                 if key == "Needle":
                     self.map[x][y] = 'N'
-                    self.items.append(Needle(x, y)) 
+                    self.items.append(Needle(y, x)) 
                 elif key == "Tube":
                     self.map[x][y] = 'T'
-                    self.items.append(Tube(x, y)) 
+                    self.items.append(Tube(y, x)) 
                 elif key == "Ether":
                     self.map[x][y] = 'E'
-                    self.items.append(Ether(x, y))
+                    self.items.append(Ether(y, x))
                     
     
     def update_character_position(self, x, y, current_x, current_y):
@@ -120,4 +120,6 @@ class Maze:
         if False in list_state:
             return False        
         else:
-            return True 
+            return True
+        
+   

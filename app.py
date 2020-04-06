@@ -34,6 +34,7 @@ class App:
            
         while self.running:
             game_view.blit_background()
+            game_view.blit_sprites(model.get_all_sprites())
             controller.keyboard_game_control(self)
             game_view.update_display()   
        

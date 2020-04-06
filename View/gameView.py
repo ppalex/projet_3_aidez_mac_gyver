@@ -19,7 +19,7 @@ class MainDisplay():
     
     def __init__(self):
         self.width = 450
-        self.height=450
+        self.height= 450
         pg.init()
         pg.time.Clock().tick(30)       
     
@@ -31,7 +31,11 @@ class MainDisplay():
         self.screen.blit(self.background, (0,0))
         
     def blit_sprites(self, sprites):
-        pass
+        
+        for sprite in sprites:
+            self.screen.blit(sprite.image, 
+                             (sprite.x * sprite.width_px, 
+                              sprite.y * sprite.height_px))
         
     def update_display(self):
         pg.display.flip()

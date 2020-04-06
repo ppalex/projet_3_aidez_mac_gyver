@@ -1,9 +1,10 @@
 
 class Cell():
-    WIDTH = 30
-    HEIGHT = 30
+    
+    WIDTH_PX = 30
+    HEIGHT_PX = 30
     
     def __init__(self, x, y):
             
-        self.width, self.height = self.WIDTH, self.HEIGHT
+        self.width_px, self.height_px = self.WIDTH_PX, self.HEIGHT_PX
         self.x, self.y = x, y
