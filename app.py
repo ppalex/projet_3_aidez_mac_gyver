@@ -29,13 +29,12 @@ class App:
         """Run the main event loop."""
         controller = self.controller
         controller.on_init()
-        
-        model = self.controller.get_model
-          
+                
+        model = controller.get_model         
        
            
         while self.running:
-            controller.keyboard_game_control(self)               
+            controller.keyboard_game_control(self)    
        
        
         if model.get_character.alive:

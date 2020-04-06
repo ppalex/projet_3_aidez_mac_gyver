@@ -37,35 +37,30 @@ class Character(Cell):
         if current_x < (width - 1) and \
             (not self.check_collision(current_x+self.change_x, current_y, maze)):
                 
-            self.set_current_pos(current_x+self.change_x, current_y)
-            
+            self.set_current_pos(current_x+self.change_x, current_y)           
                      
         self.change_x -= self.SPEED
         
         
     # MOVE LEFT  
     def move_left(self, current_x, current_y, maze):
-        self.change_x -= self.SPEED
         
+        self.change_x -= self.SPEED        
         width, _ = maze.get_map_size()
         
         if current_x > (0) and \
-            (not self.check_collision(current_x+self.change_x, current_y, maze)):
-                
-            self.set_current_pos(current_x+self.change_x, current_y)
-                                
+            (not self.check_collision(current_x+self.change_x, current_y, maze)):                
+            self.set_current_pos(current_x+self.change_x, current_y)                                
         self.change_x += self.SPEED
     
     # MOVE DOWN  
     def move_down(self, current_x, current_y, maze):
         
-        self.change_y += self.SPEED
-        
+        self.change_y += self.SPEED        
         _, heigth = maze.get_map_size()
         
         if current_y < (heigth - 1) and \
-            (not self.check_collision(current_x, current_y+self.change_y, maze)):
-                
+            (not self.check_collision(current_x, current_y+self.change_y, maze)):                
             self.set_current_pos(current_x, current_y+self.change_y)
                       
         self.change_y -= self.SPEED
@@ -73,8 +68,7 @@ class Character(Cell):
     # MOVE UP   
     def move_up(self, current_x, current_y, maze):
         
-        self.change_y -= self.SPEED
-       
+        self.change_y -= self.SPEED       
         _, heigth = maze.get_map_size()
         
         if current_y > 0 and \

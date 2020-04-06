@@ -16,8 +16,7 @@ class Controller:
          
     @property
     def get_model(self):
-        return self.model
-    
+        return self.model    
     
     def on_init(self):
         self.model.maze.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
@@ -68,11 +67,7 @@ class Controller:
                 character.check_cell(character.x, character.y, maze)                             
                 maze.update_character_position(character.x, character.y, current_x, current_y)
                 print(self.get_model.get_maze)                
-                print(character.all_items)
-                print(character.bag_of_items)
-                print(maze.get_number_of_items())
-                print(len(character.bag_of_items))
-
+              
         if character.check_items_picked_up(maze):
             character.all_items = True
             

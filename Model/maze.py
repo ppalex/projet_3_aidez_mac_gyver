@@ -114,8 +114,7 @@ class Maze:
         return len(self.items)
     
     
-    def gates_opened(self):
-        
+    def gates_opened(self):        
         list_state = [gate.open for gate in self.gates]
         
         if False in list_state:
