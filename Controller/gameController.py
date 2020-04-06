@@ -4,6 +4,8 @@ import os
 import pygame as pg
 
 import Model.gameModel as gameModel
+import View.gameView as gameView
+
 
 import Configuration.config as config
 
@@ -12,11 +14,16 @@ config.load('./configuration/initialisation.yml')
 
 class Controller:
     def __init__(self):
-        self.model = gameModel.Model()        
+        self.model = gameModel.Model()   
+        self.view = gameView.View()    
          
     @property
     def get_model(self):
-        return self.model    
+        return self.model
+    
+    @property
+    def get_view(self):
+        return self.view   
     
     def on_init(self):
         self.model.maze.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))

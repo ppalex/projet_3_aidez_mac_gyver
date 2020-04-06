@@ -17,10 +17,7 @@ class App:
     """Create a single-window app with multiple scenes."""
     
     def __init__(self, controller):
-        """Initialize pygame and the application."""
-        pg.init()
-        pg.display.set_mode((400, 400))
-        pg.time.Clock().tick(30)
+        """Initialize pygame and the application."""       
         
         self.controller = controller         
         self.running = True        
@@ -30,13 +27,17 @@ class App:
         controller = self.controller
         controller.on_init()
                 
-        model = controller.get_model         
+        model = controller.get_model 
+        
+        game_view = controller.get_view.get_game_view    
        
            
         while self.running:
-            controller.keyboard_game_control(self)    
+            game_view.blit_background()
+            controller.keyboard_game_control(self)
+            game_view.update_display()   
        
-       
+
         if model.get_character.alive:
             print('YOU WIN')
 
