@@ -95,34 +95,51 @@ class Character(Cell):
 
     def check_cell(self, current_x, current_y, maze):
         
-        element_on_cell = maze.map[current_y][current_x]
-        
+        element_on_cell = maze.map[current_y][current_x]        
         
         if  element_on_cell != maze.symbol['path'] and \
             element_on_cell != maze.symbol['gate'] and \
-            element_on_cell != maze.symbol['gardian']:
+            element_on_cell != maze.symbol['gardian'] and \
+            element_on_cell != maze.symbol['character']:
+                self.pick_up_item(element_on_cell, maze)
                 
-                self.pick_up_item(element_on_cell)
-                
+        elif element_on_cell == maze.symbol['gardian']:
+            self.hit_guardian(maze)
+        
+        elif element_on_cell == maze.symbol['gate']:
+            self.open_gate(maze)
     
     
-    
-    def pick_up_item(self, element_name):
+    def pick_up_item(self, element_on_cell, maze):
         
         element_name = [k for k,v in maze.symbol.items() if v == element_on_cell][0]
                 
-                if element_name not in self.bag_of_items:
-                    self.bag_of_items[element_name] = 1
-                else:
-                    self.bag_of_items[element_name] += 1
+        if element_name not in self.bag_of_items:
+            self.bag_of_items[element_name] = 1
+        else:
+            self.bag_of_items[element_name] += 1     
                 
-                
-                
-                
-                
+
+    def check_items_picked_up(self, maze):
+        
+        return len(self.bag_of_items) == maze.get_number_of_items()
+ 
+    def open_gate(self, maze):
+        print('GATE')                
+        asleep_guardians = [guardian.is_sleeping() for guardian in maze.guardians]         
+            
+        if set(asleep_guardians).pop() == True:
+            for gate in maze.gates:
+                gate.open = True 
     
-    def open_gate(self):
-        pass
     
-    def hit_guardian(self):
-        pass
+    def hit_guardian(self, maze):
+        
+        guardian = maze.guardians[0]
+        
+        if self.all_items:
+            print('GUARDIAN SLEEP')
+            guardian.sleep = True
+        else:
+            print('YOU DIE')
+            self.alive = False

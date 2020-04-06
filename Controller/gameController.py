@@ -1,7 +1,13 @@
 import sys
+
+import os
 import pygame as pg
 
 import Model.gameModel as gameModel
+
+import Configuration.config as config
+
+config.load('./configuration/initialisation.yml')
 
 
 class Controller:
@@ -12,8 +18,11 @@ class Controller:
     def get_model(self):
         return self.model
     
-    def keyboard_control(self, app):
-        
+    
+    def on_init(self):
+        self.model.maze.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
+    
+    def keyboard_game_control(self, app):        
         
         character =  self.get_model.get_character
         maze = self.get_model.get_maze
@@ -58,10 +67,16 @@ class Controller:
                 character.move_up(current_x, current_y, maze)
                 character.check_cell(character.x, character.y, maze)                             
                 maze.update_character_position(character.x, character.y, current_x, current_y)
-                print(self.get_model.get_maze)
-    
+                print(self.get_model.get_maze)                
+                print(character.all_items)
+                print(character.bag_of_items)
+                print(maze.get_number_of_items())
+                print(len(character.bag_of_items))
+
+        if character.check_items_picked_up(maze):
+            character.all_items = True
             
-           
-                                   
+        if maze.gates_opened():
+            app.running = False                     
                     
               

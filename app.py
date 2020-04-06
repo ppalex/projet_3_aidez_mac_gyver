@@ -28,13 +28,19 @@ class App:
     def run(self):
         """Run the main event loop."""
         controller = self.controller
+        controller.on_init()
+        
         model = self.controller.get_model
           
-        model.maze.initialize(os.path.join(config.value['src']['data'], 'maze.csv'))
+       
            
         while self.running:
-            controller.keyboard_control(self)                 
+            controller.keyboard_game_control(self)               
        
+       
+        if model.get_character.alive:
+            print('YOU WIN')
+
  
 if __name__ == '__main__':
     

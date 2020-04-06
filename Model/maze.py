@@ -85,7 +85,7 @@ class Maze:
         width, height = self.get_map_size()
                      
         for key, value in self.number_items.items():            
-            for n in range(value):
+            for _ in range(value):
                 x = randint(0, width - 1)
                 y = randint(0, height - 1)               
                 
@@ -108,3 +108,17 @@ class Maze:
         
         self.map[current_y][current_x] = self.symbol['path']
         self.map[y][x] = self.symbol['character']
+        
+        
+    def get_number_of_items(self):
+        return len(self.items)
+    
+    
+    def gates_opened(self):
+        
+        list_state = [gate.open for gate in self.gates]
+        
+        if False in list_state:
+            return False        
+        else:
+            return True 
