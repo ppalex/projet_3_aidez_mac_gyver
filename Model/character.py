@@ -1,5 +1,8 @@
+import os
+import pygame as pg
 
 import Configuration.config as config
+
 from Model.board import Cell
 
 config.load('./configuration/initialisation.yml')
@@ -12,7 +15,7 @@ class Character(Cell):
     
     def __init__(self, x=INIT_X, y=INIT_Y):
         super().__init__(x, y)
-                         
+        self.image = pg.image.load(os.path.join(config.value['src']['images'],'player.png'))                
         self.change_x = 0
         self.change_y = 0 
               

@@ -40,7 +40,6 @@ class App:
 
         if model.get_character.alive:
             print('YOU WIN')
-
  
 if __name__ == '__main__':
     

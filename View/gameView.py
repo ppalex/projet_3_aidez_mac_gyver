@@ -30,10 +30,12 @@ class MainDisplay():
     def blit_background(self):
         self.screen.blit(self.background, (0,0))
         
+    def blit_sprites(self, sprites):
+        pass
+        
     def update_display(self):
-        pg.display.flip()    
-        
-        
+        pg.display.flip()
+              
         
 class GameDisplay(MainDisplay):
     def __init__(self):

@@ -1,4 +1,6 @@
 
+import os
+import pygame as pg
 from Model.board import Cell
 
 import Configuration.config as config
@@ -11,16 +13,19 @@ class Item(Cell):
             
 
 class Needle(Item):
-    def __init__(self, x, y):
+    def __init__(self, x, y):        
         super().__init__(x, y)
+        self.image = pg.image.load(os.path.join(config.value['src']['images'],'needle.png'))
                 
         
 class Tube(Item):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.image = pg.image.load(os.path.join(config.value['src']['images'],'tube.png'))
         
 
 class Ether(Item):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.image = pg.image.load(os.path.join(config.value['src']['images'],'ether.png'))
         
