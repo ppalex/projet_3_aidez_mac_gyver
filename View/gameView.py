@@ -74,15 +74,19 @@ class GameDisplay(MainDisplay):
 
     def game_over(self):
         text = "GAME OVER!"
+        text_button = 'MENU'
         font = pg.font.SysFont(None, 50)
-        self.draw_text(text, font, self.WHITE, self.screen, 100, 100)
-        pg.draw.rect(self.screen, (255,69,0), self.back_menu_button)        
+        self.draw_text(text, font, self.WHITE, self.screen, 150, 100)        
+        pg.draw.rect(self.screen, (0,0,0), self.back_menu_button)
+        self.draw_text(text_button, font, self.WHITE, self.screen, 185, 155)        
     
     def game_win(self):
         text = "YOU WIN!"
+        text_button = 'MENU'
         font = pg.font.SysFont(None, 50)
-        self.draw_text(text, font, self.WHITE, self.screen, 100, 100)
-        pg.draw.rect(self.screen, (255,69,0), self.back_menu_button)
+        self.draw_text(text, font, self.WHITE, self.screen, 150, 100)        
+        pg.draw.rect(self.screen, (0,0,0), self.back_menu_button)
+        self.draw_text(text_button, font, self.WHITE, self.screen, 185, 155)
 
 
 class MenuDisplay(MainDisplay):    

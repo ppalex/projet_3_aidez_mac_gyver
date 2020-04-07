@@ -39,13 +39,11 @@ class Controller:
                 sys.exit(0)                                     
             
             elif keys[pg.K_RIGHT]:
-                print('RIGHT')
-                
+                print('RIGHT')                
                 current_x, current_y = character.get_current_pos()
                 character.move_right(current_x, current_y, maze)                
                 character.check_cell(character.x, character.y, maze)                             
-                maze.update_character_position(character.x, character.y, current_x, current_y)       
-                
+                maze.update_character_position(character.x, character.y, current_x, current_y)     
                 print(self.get_model.get_maze)
                 
             elif keys[pg.K_LEFT]:
@@ -76,10 +74,9 @@ class Controller:
             character.all_items = True
             
         if maze.gates_opened():
-            app.game_running = False                   
+            app.game_running = False             
 
-
-
+    
     def keyboard_menu_control(self, app):             
         mx, my = pg.mouse.get_pos()    
         click = False

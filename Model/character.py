@@ -116,8 +116,7 @@ class Character(Cell):
         else:
             self.bag_of_items[element_name] += 1
             
-        maze.remove_item_from_list(self.x, self.y)
-        
+        maze.remove_item_from_list(self.x, self.y)        
                 
 
     def check_items_picked_up(self, maze):        
