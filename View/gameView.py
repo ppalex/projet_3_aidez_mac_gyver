@@ -64,8 +64,7 @@ class GameDisplay(MainDisplay):
                                                      'background.jpg')).convert() 
  
 
-    def draw_inventory(self, items):
-        
+    def draw_inventory(self, items):        
         if not items:
             text = "Inventory: empty"        
         else:
@@ -92,6 +91,14 @@ class MenuDisplay(MainDisplay):
         self.quit_button = pg.Rect(50, 200, 200, 50)
 
 
+    
+        
+    def draw_menu_view(self):      
+        
+       
+        self.draw_button()
+        
+        
     def draw_button(self):
         pg.draw.rect(self.screen, (255,69,0), self.menu_button)
-        pg.draw.rect(self.screen, (255,69,0), self.quit_button)    
+        pg.draw.rect(self.screen, (255,69,0), self.quit_button)

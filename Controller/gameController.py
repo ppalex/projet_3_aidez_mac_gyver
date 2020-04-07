@@ -78,3 +78,6 @@ class Controller:
             
         if maze.gates_opened():
             app.running = False                     
+
+
+    

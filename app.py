@@ -25,7 +25,11 @@ class App:
         controller = self.controller
         menu_view = controller.get_view.menu_view
         menu_view.blit_background()
-                    
+        menu_view.draw_menu_view()
+        menu_view.update_display()
+        
+        
+           
                     
     def start_game(self):
         """Run the main event loop."""
