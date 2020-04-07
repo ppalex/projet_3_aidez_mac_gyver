@@ -110,15 +110,18 @@ class Character(Cell):
     def pick_up_item(self, element_on_cell, maze):
         
         element_name = [k for k,v in maze.symbol.items() if v == element_on_cell][0]
-                
+            
         if element_name not in self.bag_of_items:
             self.bag_of_items[element_name] = 1
         else:
-            self.bag_of_items[element_name] += 1     
+            self.bag_of_items[element_name] += 1
+            
+        maze.remove_item_from_list(self.x, self.y)
+        print(self.all_items)
+        print(self.bag_of_items)
                 
 
-    def check_items_picked_up(self, maze):
-        
+    def check_items_picked_up(self, maze):        
         return len(self.bag_of_items) == maze.get_number_of_items()
  
     def open_gate(self, maze):

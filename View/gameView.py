@@ -21,7 +21,7 @@ class MainDisplay():
         self.width = 450
         self.height= 450
         pg.init()
-        pg.time.Clock().tick(30)       
+        pg.time.Clock().tick(60)       
     
     @property
     def get_screen(self):

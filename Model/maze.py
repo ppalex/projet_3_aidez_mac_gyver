@@ -59,7 +59,7 @@ class Maze:
         self.generate_maze()
         print('maze generated')
         self.put_random_items()
-        print('random items done')      
+        print('random items done')
         
     def get_map_size(self):        
         return (len(self.map), len(self.map[0]))    
@@ -91,7 +91,7 @@ class Maze:
                 
                 while not self.map[x][y] == '0':
                     x = randint(0, width - 1)
-                    y = randint(0, height - 1)             
+                    y = randint(0, height - 1)       
          
                 if key == "Needle":
                     self.map[x][y] = 'N'
@@ -111,9 +111,19 @@ class Maze:
         
         
     def get_number_of_items(self):
-        return len(self.items)
+        
+        sum_of_items = 0
+        for v in self.number_items.values():
+            sum_of_items += v        
+        return sum_of_items
     
     
+    def remove_item_from_list(self, x, y):
+        coordinates_char = (x, y)
+        
+        self.items = [item for item in self.items if ((item.x, item.y) != coordinates_char)]       
+          
+  
     def gates_opened(self):        
         list_state = [gate.open for gate in self.gates]
         
