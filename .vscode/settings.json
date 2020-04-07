@@ -1,3 +1,8 @@
 {
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.pythonPath": "envs\\Scripts\\python.exe",
+    "python.linting.banditEnabled": false,
+    "python.linting.flake8Enabled": true
     
 }
