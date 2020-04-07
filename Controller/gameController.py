@@ -44,7 +44,7 @@ class Controller:
                 current_x, current_y = character.get_current_pos()
                 character.move_right(current_x, current_y, maze)                
                 character.check_cell(character.x, character.y, maze)                             
-                maze.update_character_position(character.x, character.y, current_x, current_y)            
+                maze.update_character_position(character.x, character.y, current_x, current_y)       
                 
                 print(self.get_model.get_maze)
                 
@@ -61,8 +61,7 @@ class Controller:
                 current_x, current_y = character.get_current_pos()
                 character.move_down(current_x, current_y, maze)
                 character.check_cell(character.x, character.y, maze)
-                maze.update_character_position(character.x, character.y, current_x, current_y)
-                
+                maze.update_character_position(character.x, character.y, current_x, current_y)                
                 print(self.get_model.get_maze)
                 
             elif keys[pg.K_UP]:
@@ -82,11 +81,47 @@ class Controller:
 
 
     def keyboard_menu_control(self, app):             
-            
+        mx, my = pg.mouse.get_pos()    
+        click = False
+        
+        menu_view = self.get_view.menu_view
+         
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
-            
-                    
+                
+            if event.type == pg.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+        
+        if menu_view.menu_button.collidepoint((mx, my)):
+            if click:
+                app.menu_view_running = False                
+                
+        if menu_view.quit_button.collidepoint((mx, my)):
+            if click:
+                pg.quit()
+                sys.exit(0)                
+                
+                
+    def keyboard_end_game_control(self, app):
+        mx, my = pg.mouse.get_pos()    
+        click = False 
+                
+        game_view = self.get_view.game_view
+        
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+                
+            if event.type == pg.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+        
+        if game_view.back_menu_button.collidepoint((mx, my)):
+            if click:
+                app.end_game_running = False
+                
         

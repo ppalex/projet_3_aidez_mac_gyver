@@ -6,8 +6,7 @@ import Configuration.config as config
 
 config.load('./configuration/initialisation.yml')
 
-class View:
-    
+class View:    
 
     def __init__(self):
         self.game_view = GameDisplay()
@@ -53,7 +52,7 @@ class MainDisplay():
         textobj = font.render(text, 1, color)
         textrect = textobj.get_rect()
         textrect.topleft = (x, y)
-        surface.blit(textobj, textrect) 
+        surface.blit(textobj, textrect)
               
         
 class GameDisplay(MainDisplay):
@@ -61,8 +60,9 @@ class GameDisplay(MainDisplay):
         super().__init__()
         self.screen = pg.display.set_mode((self.width, self.height))
         self.background = pg.image.load(os.path.join(config.value['src']['images'], 
-                                                     'background.jpg')).convert() 
- 
+                                                     'background.jpg')).convert()
+        self.back_menu_button = pg.Rect(150, 150, 200, 50)
+         
 
     def draw_inventory(self, items):        
         if not items:
@@ -72,12 +72,17 @@ class GameDisplay(MainDisplay):
         font = pg.font.SysFont(None, 25)
         self.draw_text(text, font, self.WHITE, self.screen, 100, 5)
 
-
     def game_over(self):
-        pass
+        text = "GAME OVER!"
+        font = pg.font.SysFont(None, 50)
+        self.draw_text(text, font, self.WHITE, self.screen, 100, 100)
+        pg.draw.rect(self.screen, (255,69,0), self.back_menu_button)        
     
     def game_win(self):
-        pass
+        text = "YOU WIN!"
+        font = pg.font.SysFont(None, 50)
+        self.draw_text(text, font, self.WHITE, self.screen, 100, 100)
+        pg.draw.rect(self.screen, (255,69,0), self.back_menu_button)
 
 
 class MenuDisplay(MainDisplay):    
@@ -89,15 +94,14 @@ class MenuDisplay(MainDisplay):
         
         self.menu_button = pg.Rect(50, 100, 200, 50)
         self.quit_button = pg.Rect(50, 200, 200, 50)
-
-
-    
+            
         
     def draw_menu_view(self):      
-        
-       
+        self.draw_text('MENU', self.font, self.WHITE, self.screen, 20, 20)
         self.draw_button()
-        
+        self.draw_text('NEW GAME', self.font, self.WHITE, self.screen, 80, 110)
+        self.draw_text('QUIT', self.font, self.WHITE, self.screen, 80, 210)
+        self.draw_text('Use TAB for help', self.font, self.WHITE, self.screen, 0, 420)        
         
     def draw_button(self):
         pg.draw.rect(self.screen, (255,69,0), self.menu_button)
