@@ -76,7 +76,7 @@ class Controller:
             character.all_items = True
             
         if maze.gates_opened():
-            app.running = False                     
+            app.game_running = False                   
 
 
 

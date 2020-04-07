@@ -21,9 +21,7 @@ class App:
         self.game_running = False
         self.menu_view_running = False
         self.end_game_running = False    
-    
-    
-    
+        
     def on_init(self):
         self.controller = gameController.Controller()
        
@@ -77,8 +75,7 @@ class App:
             controller.keyboard_end_game_control(self)
           
             if character.alive:
-                game_view.game_win()       
-                
+                game_view.game_win()    
             else:
                 game_view.game_over()        
          

@@ -129,8 +129,8 @@ class Character(Cell):
             
         if set(asleep_guardians).pop() == True:
             for gate in maze.gates:
-                gate.open = True 
-    
+                gate.open = True
+                    
     
     def hit_guardian(self, maze):
         
