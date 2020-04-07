@@ -80,4 +80,13 @@ class Controller:
             app.running = False                     
 
 
-    
+
+    def keyboard_menu_control(self, app):             
+            
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+            
+                    
+        

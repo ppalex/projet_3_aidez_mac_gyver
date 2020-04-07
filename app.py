@@ -28,6 +28,8 @@ class App:
         menu_view.draw_menu_view()
         menu_view.update_display()
         
+       
+            
         
            
                     
