@@ -30,13 +30,21 @@ class Controller:
         
         character =  self.get_model.get_character
         maze = self.get_model.get_maze
+        game_view = self.get_view.get_game_view
         
+        
+        keys = pg.key.get_pressed()  
+            
+        if keys[pg.K_TAB]:
+                print('HELP')
+                game_view.print_help()
+                
         for event in pg.event.get():
-            keys = pg.key.get_pressed()  
+            
             
             if event.type == pg.QUIT:
                 pg.quit()
-                sys.exit(0)                                     
+                sys.exit(0)                                  
             
             elif keys[pg.K_RIGHT]:
                 print('RIGHT')                

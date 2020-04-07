@@ -23,7 +23,7 @@ class MainDisplay():
     
     def __init__(self):
         self.width = 450
-        self.height= 450
+        self.height = 450
         
         pg.init()
         pg.display.set_caption('Mac Gyver game')
@@ -31,7 +31,15 @@ class MainDisplay():
     
     @property
     def get_screen(self):
-        return self.screen 
+        return self.screen
+    
+    @property
+    def get_width(self):
+        return self.width 
+    
+    @property
+    def get_height(self):
+        return self.height 
      
     def blit_background(self):
         self.screen.blit(self.background, (0,0))
@@ -71,6 +79,15 @@ class GameDisplay(MainDisplay):
             text = '/'.join(['%s: %s' % (key.capitalize(), value) for (key, value) in items.items()])             
         font = pg.font.SysFont(None, 25)
         self.draw_text(text, font, self.WHITE, self.screen, 100, 5)
+        
+    def print_help(self):
+        help = "USE KEYS ARROWS TO MOVE"
+        font = pg.font.SysFont(None, 30)
+        text = font.render(help, True, self.WHITE)
+        text_rect = text.get_rect()
+        text_x = self.screen.get_width()/ 2 - text_rect.width / 2
+        text_y = self.screen.get_height() / 2 - text_rect.height / 2
+        self.screen.blit(text, [text_x, text_y])
 
     def game_over(self):
         text = "GAME OVER!"
@@ -94,8 +111,7 @@ class MenuDisplay(MainDisplay):
         
         self.screen = pg.display.set_mode((width, height))
         self.background = pg.image.load(os.path.join(config.value['src']['images'], 'background_menu.png')).convert()
-        self.font = pg.font.SysFont(None, 40)
-        
+        self.font = pg.font.SysFont(None, 40)        
         self.menu_button = pg.Rect(50, 100, 200, 50)
         self.quit_button = pg.Rect(50, 200, 200, 50)
             
