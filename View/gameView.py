@@ -3,12 +3,15 @@ import os
 import pygame as pg
 
 import Configuration.config as config
+
 config.load('./configuration/initialisation.yml')
 
 class View:
+    
 
     def __init__(self):
         self.game_view = GameDisplay()
+        self.menu_view = MenuDisplay()
         
     @property
     def get_game_view(self):
@@ -17,11 +20,15 @@ class View:
    
 class MainDisplay():
     
+    WHITE = (255,255,255)
+    
     def __init__(self):
         self.width = 450
         self.height= 450
+        
         pg.init()
-        pg.time.Clock().tick(60)       
+        pg.display.set_caption('Mac Gyver game')
+        pg.time.Clock().tick(10)       
     
     @property
     def get_screen(self):
@@ -39,13 +46,52 @@ class MainDisplay():
         
     def update_display(self):
         pg.display.flip()
+    
+        
+    def draw_text(self, text, font, color, surface, x, y):
+        
+        textobj = font.render(text, 1, color)
+        textrect = textobj.get_rect()
+        textrect.topleft = (x, y)
+        surface.blit(textobj, textrect) 
               
         
 class GameDisplay(MainDisplay):
     def __init__(self):
         super().__init__()
         self.screen = pg.display.set_mode((self.width, self.height))
-        self.background = pg.image.load(os.path.join(config.value['src']['images'], 'background.jpg')).convert() 
+        self.background = pg.image.load(os.path.join(config.value['src']['images'], 
+                                                     'background.jpg')).convert() 
  
+
+    def draw_inventory(self, items):
+        
+        if not items:
+            text = "Inventory: empty"        
+        else:
+            text = '/'.join(['%s: %s' % (key.capitalize(), value) for (key, value) in items.items()])             
+        font = pg.font.SysFont(None, 25)
+        self.draw_text(text, font, self.WHITE, self.screen, 100, 5)
+
+
+    def game_over(self):
+        pass
+    
+    def game_win(self):
+        pass
+
+
 class MenuDisplay(MainDisplay):    
-    pass
+    def __init__(self, width=450, height=450):
+        
+        self.screen = pg.display.set_mode((width, height))
+        self.background = pg.image.load(os.path.join(config.value['src']['images'], 'background_menu.png')).convert()
+        self.font = pg.font.SysFont(None, 40)
+        
+        self.menu_button = pg.Rect(50, 100, 200, 50)
+        self.quit_button = pg.Rect(50, 200, 200, 50)
+
+
+    def draw_button(self):
+        pg.draw.rect(self.screen, (255,69,0), self.menu_button)
+        pg.draw.rect(self.screen, (255,69,0), self.quit_button)    

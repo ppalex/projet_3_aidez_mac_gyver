@@ -1,13 +1,11 @@
+import os
 import sys
 
-import os
 import pygame as pg
 
+import Configuration.config as config
 import Model.gameModel as gameModel
 import View.gameView as gameView
-
-
-import Configuration.config as config
 
 config.load('./configuration/initialisation.yml')
 
@@ -80,5 +78,3 @@ class Controller:
             
         if maze.gates_opened():
             app.running = False                     
-                    
-              

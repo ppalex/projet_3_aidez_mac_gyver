@@ -1,5 +1,6 @@
-import Model.maze as maze
 import Model.character as character
+import Model.maze as maze
+
 
 class Model:
     def __init__(self):

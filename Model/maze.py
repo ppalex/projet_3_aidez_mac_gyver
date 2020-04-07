@@ -104,7 +104,7 @@ class Maze:
                     self.items.append(Ether(y, x))
                     
     
-    def update_character_position(self, x, y, current_x, current_y):
+    def update_character_position(self, x, y, current_x, current_y):        
         
         self.map[current_y][current_x] = self.symbol['path']
         self.map[y][x] = self.symbol['character']
@@ -131,5 +131,3 @@ class Maze:
             return False        
         else:
             return True
-        
-   
