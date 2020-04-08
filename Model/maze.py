@@ -17,7 +17,8 @@ class Maze:
     HEIGTH = 15
 
     def __init__(self):
-
+        """Constructor of the class Maze.
+        """
         self.map = []
 
         self.walls = []
@@ -38,7 +39,20 @@ class Maze:
             open(os.path.join(
                 config.value['src']['data'], 'number_items.json')))
 
+    def get_map_size(self):
+        """This method get the size of the map.
+
+        Returns:
+            [Tuple] -- [Width and height of the map]
+        """
+        return (len(self.map), len(self.map[0]))
+
     def __repr__(self):
+        """This method represent the map list like a string
+
+        Returns:
+            [String] -- [This string is the representation of the maze]
+        """
         width, height = self.get_map_size()
         map = ""
         for row in range(width):
@@ -48,6 +62,13 @@ class Maze:
         return map
 
     def data_from_csv(self, csv_file):
+        """This method open a csv file with ';' delimter and read it.
+        It assigns to the map class attribute the value of the csv.
+
+        Arguments:
+            csv_file {CSV object} -- [Contains the maze modelization
+            with symbols]
+        """
         with open(csv_file, 'r') as read_obj:
             csv_reader = reader(read_obj, delimiter=';')
 
@@ -60,9 +81,6 @@ class Maze:
         print('maze generated')
         self.put_random_items()
         print('random items done')
-
-    def get_map_size(self):
-        return (len(self.map), len(self.map[0]))
 
     def generate_maze(self):
 
@@ -108,6 +126,11 @@ class Maze:
         self.map[y][x] = self.symbol['character']
 
     def get_number_of_items(self):
+        """This method compute the total number of items.
+
+        Returns:
+            [Integer] -- [Sum of the items]
+        """
 
         sum_of_items = 0
         for v in self.number_items.values():
@@ -115,12 +138,30 @@ class Maze:
         return sum_of_items
 
     def remove_item_from_list(self, x, y):
+        """This method remove an element/sprite of a list by creating
+        another list without the element.
+
+        The element is removed if the coordonates of the character and
+        the element/sprite are the same.
+
+        So if the character and the element are on the same cell,
+        the element/sprite is removed from the list of sprite.
+
+        Arguments:
+            x {Integer} -- [Abscissa]
+            y {Integer} -- [Ordinate]
+        """
         coordinates_char = (x, y)
 
         self.items = [item for item in self.items if (
             (item.x, item.y) != coordinates_char)]
 
     def gates_opened(self):
+        """This method determine if the gates on maze are opened or not.
+
+        Returns:
+            [Boolean] -- [True if the gates are open. False if not.]
+        """
         list_state = [gate.open for gate in self.gates]
 
         if False in list_state:

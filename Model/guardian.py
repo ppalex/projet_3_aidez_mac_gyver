@@ -24,7 +24,7 @@ class Guardian(Cell):
         self.sleep = False
 
     def is_sleeping(self):
-        """This function determine if the guardian is sleeping or not.
+        """This method determine if the guardian is sleeping or not.
 
         Returns:
             [Boolean] -- True if the guardian is sleeping. False if not.
