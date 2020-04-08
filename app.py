@@ -6,8 +6,6 @@ config.load('./configuration/initialisation.yml')
 
 class App:
 
-    """Create a single-window app with multiple scenes."""
-
     def __init__(self):
         """Initialize pygame and the application."""
 
@@ -17,9 +15,14 @@ class App:
         self.end_game_running = False
 
     def on_init(self):
+        """This method create and assign an object Controller to the
+        app.
+        """
         self.controller = gameController.Controller()
 
     def run(self):
+        """This method run the game and display the menu.
+        """
         print('MENU')
         self.on_init()
         controller = self.controller
@@ -36,12 +39,12 @@ class App:
         self.start_game()
 
     def start_game(self):
-        """Run the main event loop."""
+        """This method start a new game.
+        """
         controller = self.controller
         controller.on_init()
         model = controller.get_model
         game_view = controller.get_view.get_game_view
-
         character = model.get_character
 
         self.game_running = True
@@ -58,7 +61,13 @@ class App:
         self.end_game(character, game_view, controller)
 
     def end_game(self, character, game_view, controller):
+        """This method display the end screen.
 
+        Arguments:
+            character {Object} -- Character of the game.
+            game_view {Object} -- Game view.
+            controller {Object} -- Controller.
+        """
         self.end_game_running = True
 
         while self.end_game_running:
@@ -80,5 +89,6 @@ class App:
 
 
 if __name__ == '__main__':
+
     game = App()
     game.run()

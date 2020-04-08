@@ -44,6 +44,12 @@ class Controller:
             config.value['src']['data'], 'maze.csv'))
 
     def keyboard_game_control(self, app):
+        """This method provide the key board control when the user is
+        playing into the game.
+
+        Arguments:
+            app {Object} -- Application.
+        """
 
         character = self.get_model.get_character
         maze = self.get_model.get_maze
@@ -104,6 +110,12 @@ class Controller:
             app.game_running = False
 
     def keyboard_menu_control(self, app):
+        """This method provide the key board control when the user is
+        playing into menu.
+
+        Arguments:
+            app {Object} -- Application.
+        """
         mx, my = pg.mouse.get_pos()
         click = False
 
@@ -128,6 +140,11 @@ class Controller:
                 sys.exit(0)
 
     def keyboard_end_game_control(self, app):
+        """This method provide the key board control when the user end a game.
+
+        Arguments:
+            app {Object} -- Application.
+        """
         mx, my = pg.mouse.get_pos()
         click = False
 
