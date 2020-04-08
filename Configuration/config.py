@@ -3,19 +3,11 @@
 The configuration is read from a YAML file and saved in a module-global
 variable.
 
-```python
-import ema.config
-
-# Load configuration file
-ema.config.load(path)
-
-# View the configuration
-print(ema.config.value)
-```
 """
 import yaml
 
-value = {} # Global var, not constant
+value = {}  # Global var, not constant
+
 
 def load(config_path):
     """Loads a configuration file into a module-global variable.
