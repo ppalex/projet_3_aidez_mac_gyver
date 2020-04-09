@@ -60,6 +60,7 @@ class Controller:
         if keys[pg.K_TAB]:
             print('HELP')
             game_view.print_help()
+            game_view.update_display()
 
         for event in pg.event.get():
 
@@ -102,6 +103,8 @@ class Controller:
                 maze.update_character_position(
                     character.x, character.y, current_x, current_y)
                 print(self.get_model.get_maze)
+
+            self.display_game()
 
         if character.check_items_picked_up(maze):
             character.all_items = True

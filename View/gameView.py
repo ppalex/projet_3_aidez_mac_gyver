@@ -140,13 +140,9 @@ class GameDisplay(MainDisplay):
     def print_help(self):
         """This method shows the help information on the screen.
         """
-        help = "USE KEYS ARROWS TO MOVE"
-        font = pg.font.SysFont(None, 30)
-        text = font.render(help, True, self.WHITE)
-        text_rect = text.get_rect()
-        text_x = self.screen.get_width() / 2 - text_rect.width / 2
-        text_y = self.screen.get_height() / 2 - text_rect.height / 2
-        self.screen.blit(text, [text_x, text_y])
+        help = "USE KEYS ARROWS TO MOVE."
+        font = pg.font.SysFont(None, 25)
+        self.draw_text(help, font, self.WHITE, self.screen, 100, 150)
 
     def game_over(self):
         """This method shows the game over end on the screen.

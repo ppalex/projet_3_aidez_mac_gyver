@@ -106,7 +106,7 @@ class Maze:
                 x = randint(0, width - 1)
                 y = randint(0, height - 1)
 
-                while not self.map[x][y] == '0':
+                while not self.map[x][y] == self.symbol['path']:
                     x = randint(0, width - 1)
                     y = randint(0, height - 1)
 
