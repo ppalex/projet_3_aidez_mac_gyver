@@ -162,3 +162,33 @@ class Controller:
         if game_view.back_menu_button.collidepoint((mx, my)):
             if click:
                 app.end_game_running = False
+
+    def display_menu(self):
+        menu_view = self.get_view.menu_view
+        menu_view.blit_background()
+        menu_view.draw_menu_view()
+        menu_view.update_display()
+
+    def display_game(self):
+        game_view = self.get_view.get_game_view
+        model = self.get_model
+        character = model.get_character
+
+        game_view.blit_background()
+        game_view.blit_sprites(model.get_all_sprites())
+        game_view.draw_inventory(character.bag_of_items)
+        game_view.update_display()
+
+    def display_end_game(self):
+        game_view = self.get_view.get_game_view
+        character = self.model.get_character
+
+        if character.alive:
+            game_view.game_win()
+        else:
+            game_view.game_over()
+
+        game_view.update_display()
+
+    def is_character_alive(self):
+        return self.get_model.get_character.alive
