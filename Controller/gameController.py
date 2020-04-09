@@ -170,6 +170,8 @@ class Controller:
         menu_view.update_display()
 
     def display_game(self):
+        """This method displays the game view.
+        """
         game_view = self.get_view.get_game_view
         model = self.get_model
         character = model.get_character
@@ -180,6 +182,8 @@ class Controller:
         game_view.update_display()
 
     def display_end_game(self):
+        """This method displays the end view.
+        """
         game_view = self.get_view.get_game_view
         character = self.model.get_character
 
@@ -191,4 +195,10 @@ class Controller:
         game_view.update_display()
 
     def is_character_alive(self):
+        """This method determine if the character is
+        still alive
+
+        Returns:
+            [Boolean] -- True if alive. False if not.
+        """
         return self.get_model.get_character.alive
