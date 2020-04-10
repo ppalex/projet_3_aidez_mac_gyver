@@ -1,7 +1,13 @@
-# Projet 3: Aidez MacGyver à s'échapper !
+# Project 3: Help MacGyver to get out of the maze!
 
 ## Description
 
+I made this game in the scope of my OpenClassRooms developper course.
+
+The game is developped in python and the pygame module is used to add a visual layer on the game.
+
+To achieve the goal of the project, the goal was to develop a 2D maze in which you can move a character to go out of this
+maze.
 
 
 ## Rules of the game
