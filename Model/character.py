@@ -199,7 +199,10 @@ class Character(Cell):
         Returns:
             [Boolean] -- True if all items are taken. False if not.
         """
-        return len(self.bag_of_items) == maze.get_number_of_items()
+        n_bag_of_items = 0
+        for v in self.bag_of_items.values():
+            n_bag_of_items += int(v)
+        return n_bag_of_items == maze.get_number_of_items()
 
     def open_gate(self, maze):
         """This method allows the character to open the gate.
