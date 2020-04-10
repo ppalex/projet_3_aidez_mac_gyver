@@ -6,7 +6,7 @@ I made this game in the scope of my OpenClassRooms developper course.
 
 The game is developped in python and the pygame module is used to add a visual layer on the game.
 
-To achieve the goal of the project, the goal was to develop a 2D maze in which you can move a character to go out of this
+To achieve the goal of the project, I created a 2D maze in which you can move a character to go out of this
 maze.
 
 
@@ -53,5 +53,9 @@ If you want to change the map configuration, you can find the map structure in t
 * .\src\data
 * maze.csv
 
+You can also change the number of items by updating the following file:
+
+* .\src\data
+* number_items.json
 
 
