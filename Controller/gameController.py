@@ -58,7 +58,6 @@ class Controller:
         keys = pg.key.get_pressed()
 
         if keys[pg.K_TAB]:
-            print('HELP')
             game_view.print_help()
             game_view.update_display()
 

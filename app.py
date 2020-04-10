@@ -46,7 +46,6 @@ class App:
 
         while self.game_running and controller.is_character_alive():
             controller.keyboard_game_control(self)
-            # controller.display_game()
 
         self.game_running = False
 
