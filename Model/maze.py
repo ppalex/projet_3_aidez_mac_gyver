@@ -156,6 +156,25 @@ class Maze:
         self.items = [item for item in self.items if (
             (item.x, item.y) != coordinates_char)]
 
+    def remove_guardian_from_list(self, x, y):
+        """This method remove an element/sprite of a list by creating
+        another list without the element.
+
+        The element is removed if the coordonates of the character and
+        the element/sprite are the same.
+
+        So if the character and the element are on the same cell,
+        the element/sprite is removed from the list of sprite.
+
+        Arguments:
+            x {Integer} -- [Abscissa]
+            y {Integer} -- [Ordinate]
+        """
+        coordinates_char = (x, y)
+
+        self.guardians = [guardian for guardian in self.guardians if (
+            (guardian.x, guardian.y) != coordinates_char)]
+
     def gates_opened(self):
         """This method determine if the gates on maze are opened or not.
 

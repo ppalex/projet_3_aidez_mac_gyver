@@ -213,8 +213,11 @@ class Character(Cell):
         print('GATE')
         asleep_guardians = [guardian.is_sleeping()
                             for guardian in maze.guardians]
-
-        if set(asleep_guardians).pop():
+        try:
+            if set(asleep_guardians).pop():
+                for gate in maze.gates:
+                    gate.open = True
+        except KeyError:
             for gate in maze.gates:
                 gate.open = True
 
@@ -229,6 +232,7 @@ class Character(Cell):
         if self.all_items:
             print('GUARDIAN SLEEP')
             guardian.sleep = True
+            maze.remove_guardian_from_list(self.x, self.y)
         else:
             print('YOU DIE')
             self.alive = False
