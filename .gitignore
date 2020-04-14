@@ -1,3 +1,4 @@
 envs
 *.pyc
 __pycache__
+executable.py

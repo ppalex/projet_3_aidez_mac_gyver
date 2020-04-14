@@ -29,7 +29,7 @@ Take the needle, the tube and the ether to make your weapon and send the bodygua
 Use the following command in terminal to install requirements:
 
 ```
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Start the game

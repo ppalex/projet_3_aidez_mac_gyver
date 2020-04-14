@@ -72,9 +72,3 @@ class App:
     def reset_game(self):
         print('RESET')
         del self.controller
-
-
-if __name__ == '__main__':
-
-    game = App()
-    game.run()

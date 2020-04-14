@@ -190,8 +190,8 @@ class MenuDisplay(MainDisplay):
         self.draw_button()
         self.draw_text('NEW GAME', self.font, self.WHITE, self.screen, 80, 110)
         self.draw_text('QUIT', self.font, self.WHITE, self.screen, 80, 210)
-        self.draw_text('Use TAB for help', self.font,
-                       self.WHITE, self.screen, 0, 420)
+        # self.draw_text('Use TAB for help', self.font,
+        #                self.WHITE, self.screen, 0, 420)
 
     def draw_button(self):
         """This method draw two buttons for the menu.
