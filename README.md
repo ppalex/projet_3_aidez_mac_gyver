@@ -37,7 +37,7 @@ pip install -r requirements.txt
 Use the following command in terminal to launch the game:
 
 ```
-python app.py
+python launch.py
 ```
 
 ## Controls
