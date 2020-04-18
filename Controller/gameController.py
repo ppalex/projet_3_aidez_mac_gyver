@@ -166,6 +166,8 @@ class Controller:
                 app.end_game_running = False
 
     def display_menu(self):
+        """This method displays the menu view.
+        """
         menu_view = self.get_view.menu_view
         menu_view.blit_background()
         menu_view.draw_menu_view()
