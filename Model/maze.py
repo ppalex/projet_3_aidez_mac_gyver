@@ -75,6 +75,10 @@ class Maze:
             self.map = list(csv_reader)
 
     def initialize(self, csv_file):
+        """This method initialize the maze with date from csv.
+        It calls generate_maze method and put_random_items method.
+
+        """
         self.data_from_csv(csv_file)
         print('data loaded')
         self.generate_maze()
@@ -83,7 +87,9 @@ class Maze:
         print('random items done')
 
     def generate_maze(self):
-
+        """This method creates object in function of their position
+        in a two dimension list.
+        """
         width, height = self.get_map_size()
 
         for x in range(width):
@@ -98,7 +104,8 @@ class Maze:
                     self.guardians.append(Guardian(y, x))
 
     def put_random_items(self):
-
+        """This method put items randomly on the maze.
+        """
         width, height = self.get_map_size()
 
         for key, value in self.number_items.items():
@@ -121,7 +128,9 @@ class Maze:
                     self.items.append(Ether(y, x))
 
     def update_character_position(self, x, y, current_x, current_y):
-
+        """This method update the position of the character with new
+        coordinates.
+        """
         self.map[current_y][current_x] = self.symbol['path']
         self.map[y][x] = self.symbol['character']
 
