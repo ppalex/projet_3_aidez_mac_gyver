@@ -40,7 +40,7 @@ class MainDisplay():
 
         pg.init()
         pg.display.set_caption('Mac Gyver game')
-        pg.time.Clock().tick(10)
+        pg.time.Clock().tick(60)
 
     @property
     def get_screen(self):
